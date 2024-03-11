@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+
+
+    {% block title %}
+ Create Room
+    {% endblock %}
+   
+
+
+
+
+{% block content %}
+
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='create.css')}}">
+    
+
+
+
+
+
+<aside class="bd-aside sticky-xl-top text-muted align-self-start mb-3 mb-xl-5 px-2">
+ <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse"> <h2 class="h6 pt-4 pb-3 mb-4 border-bottom">Created Rooms</h2></button>
+  <nav class="small" id="toc">
+    <ul class="list-unstyled">
+      <li class="my-2">
+        
+        <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
+          <li><a class="d-inline-flex align-items-center rounded" href="#typography">Typography</a></li>
+          <li><a class="d-inline-flex align-items-center rounded" href="#images">Images</a></li>
+          <li><a class="d-inline-flex align-items-center rounded" href="#tables">Tables</a></li>
+          <li><a class="d-inline-flex align-items-center rounded" href="#figures">Figures</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+
+<div class="bd-cheatsheet container-fluid bg-body">
+  <section id="content">
+</section>
+
+
+
+
+
+
+    <article class="my-3" id="validation">
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>Create Room</h3>
+      </div>
+
+      <div>
+        <div class="bd-example">
+
+        <form method="POST" action="chat" class="row g-3">
+
+          <div class="col-md-4">
+            <label for="validationServer01" class="form-label">Room name</label>
+            <input type="text" class="form-control " id="validationServer01" required>
+
+          </div>
+          <div class="col-md-4">
+            <label for="validationServer02" class="form-label">Room id</label>
+            <input type="text" class="form-control" id="validationServer02"  required> 
+
+          </div>
+          <div class="col-md-4">
+            <label for="validationServerUsername" class="form-label">Password</label>
+            <div class="input-group has-validation">
+              <input type="Password" class="form-control " id="validationServerUsername" aria-describedby="inputGroupPrepend3" required> 
+
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input is-valid" type="checkbox" value="" required>
+              <label class="form-check-label" for="invalidCheck3">
+                Private
+              </label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Create room</button>
+          </div>
+
+        </form>
+        </div>
+      </div>
+    </article>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+      <script >
+        
+
+        /* global bootstrap: false */
+
+(function () {
+  'use strict'
+
+  // Tooltip and popover demos
+  document.querySelectorAll('.tooltip-demo')
+    .forEach(function (tooltip) {
+      new bootstrap.Tooltip(tooltip, {
+        selector: '[data-bs-toggle="tooltip"]'
+      })
+    })
+
+  document.querySelectorAll('[data-bs-toggle="popover"]')
+    .forEach(function (popover) {
+      new bootstrap.Popover(popover)
+    })
+
+  document.querySelectorAll('.toast')
+    .forEach(function (toastNode) {
+      var toast = new bootstrap.Toast(toastNode, {
+        autohide: false
+      })
+
+      toast.show()
+    })
+
+  // Disable empty links and submit buttons
+  document.querySelectorAll('[href="#"], [type="submit"]')
+    .forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault()
+      })
+    })
+
+  function setActiveItem() {
+    var hash = window.location.hash
+
+    if (hash === '') {
+      return
+    }
+
+    var link = document.querySelector('.bd-aside a[href="' + hash + '"]')
+
+    if (!link) {
+      return
+    }
+
+    var active = document.querySelector('.bd-aside .active')
+    var parent = link.parentNode.parentNode.previousElementSibling
+
+    link.classList.add('active')
+
+    if (parent.classList.contains('collapsed')) {
+      parent.click()
+    }
+
+    if (!active) {
+      return
+    }
+
+    var expanded = active.parentNode.parentNode.previousElementSibling
+
+    active.classList.remove('active')
+
+    if (expanded && parent !== expanded) {
+      expanded.click()
+    }
+  }
+
+  setActiveItem()
+  window.addEventListener('hashchange', setActiveItem)
+})()
+
+
+
+      </script>
+
+      {% endblock %}
